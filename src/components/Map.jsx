@@ -1,4 +1,8 @@
 import Sketch from "react-p5";
+import path from 'ngraph.path';
+import createGraph from 'ngraph.graph';
+import Delaunator from 'delaunator';
+
 
 const Map = () => {
   let canvasSize;
@@ -68,7 +72,7 @@ const Map = () => {
     // Lines
     let activePoints = [];
     for (let i = 0; i < canvasSize / 50; i++) {
-      const pathFinder = ngraphPath.aStar(graph, {
+      const pathFinder = path.aStar(graph, {
         distance(fromNode, toNode, link) {
           return link.data.weight;
         },
